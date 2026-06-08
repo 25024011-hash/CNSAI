@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Workaround for sandboxed environments where window.fetch has only a getter
+      // and third-party scripts/tools try to assign to it, causing TypeErrors.
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var fetchValue = originalFetch;
+          var descriptor = {
+            get: function() {
+              return fetchValue;
+            },
+            set: function(val) {
+              fetchValue = val;
+            },
+            configurable: true,
+            enumerable: true
+          };
+          Object.defineProperty(window, 'fetch', descriptor);
+          if (typeof globalThis !== 'undefined') {
+            Object.defineProperty(globalThis, 'fetch', descriptor);
+          }
+          if (typeof self !== 'undefined') {
+            Object.defineProperty(self, 'fetch', descriptor);
+          }
+        } catch (e) {
+          console.warn('Could not redefine fetch:', e);
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

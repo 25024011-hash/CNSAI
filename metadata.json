@@ -1,0 +1,6 @@
+{
+  "name": "Minh Bob - Digital Portfolio",
+  "description": "Digital Portfolio of Vũ Bảo Minh - Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo VNU-UET",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
